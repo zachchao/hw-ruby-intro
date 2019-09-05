@@ -3,29 +3,65 @@
 # Part 1
 
 def sum arr
-  # YOUR CODE HERE
+  arr.sum
 end
 
 def max_2_sum arr
-  # YOUR CODE HERE
+  if arr.length <= 1
+    return arr.sum
+  end
+
+  m1 = arr.max
+  arr.delete_at(arr.index(m1))
+  m1 + arr.max
 end
 
 def sum_to_n? arr, n
-  # YOUR CODE HERE
+  if arr.length <= 1
+    return false
+  end
+  for i in 0..arr.length - 1
+    for j in 0..arr.length - 1
+      if i != j and arr[i] + arr[j] == n
+        return true
+      end
+    end
+  end
+  false
 end
 
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
+  "Hello, #{name}"
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  if s.length == 0
+    return false
+  end
+  "bcdfghjklmnpqrstvwxyz".split(//).include? s.downcase[0]
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  if s.length == 0
+    return false
+  end
+
+  as_array = s.split(//)
+  total = 0
+  for i in 0..as_array.length - 1
+    if !['0', '1'].include? as_array[i]
+      return false
+    end
+
+    if as_array[i] == '0'
+      total *= 2
+    elsif as_array[i] == '1'
+      total = total * 2 + 1
+    end
+  end
+  total % 4 == 0
 end
 
 # Part 3
