@@ -67,5 +67,40 @@ end
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+  def initialize(isbn, price)
+    if isbn == "" or price <= 0
+      raise ArgumentError, "invalid"
+    end
+    @isbn = isbn
+    @price = price
+  end
+
+  def isbn
+    @isbn
+  end
+
+  def price
+    @price
+  end
+
+  def isbn=(isbn)
+    @isbn = isbn
+  end
+
+  def price=(price)
+    @price = price
+  end
+
+  def price_as_string
+    res = @price.to_s.split(/\./)
+
+    if res[1] == nil
+      cents = "00"
+    else
+      cents = res[1].ljust(2, '0')
+    end
+
+    res = res[0] + "." + cents
+    "$#{res}"
+  end
 end
